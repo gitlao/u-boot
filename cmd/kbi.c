@@ -1006,6 +1006,7 @@ static cmd_tbl_t cmd_kbi_sub[] = {
 static int do_kbi(cmd_tbl_t * cmdtp, int flag, int argc, char * const argv[])
 {
 	cmd_tbl_t *c;
+	return CMD_RET_SUCCESS;
 	mcu_i2c_probe(MCU_I2C_BUS_NUM);
 #if defined(CONFIG_KHADAS_VIM4)
 		run_command("i2c dev 6", 0);

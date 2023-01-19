@@ -36,8 +36,8 @@ static int _get_partition_info_aml(struct blk_desc * dev_desc,
 	/* using partition name in partition tables */
 	ret = get_part_info_from_tbl(dev_desc, part_num, info);
 	if (ret) {
-		printf ("** Partition %d not found on device %d **\n",
-			part_num,dev_desc->devnum);
+		/*printf ("** Partition %d not found on device %d **\n",
+			part_num,dev_desc->devnum);*/
 		return -1;
 	}
 

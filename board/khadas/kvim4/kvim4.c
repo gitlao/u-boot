@@ -226,6 +226,34 @@ void board_init_mem(void) {
 	#endif
 }
 
+int board_cxm_init(void)
+{
+#if 0
+	run_command("gpio set GPIOD_9", 0); //VCC_5V
+	run_command("gpio set GPIOD_10", 0); //VDDQLP
+	run_command("gpio set GPIOX_16", 0); //ETH_PWR
+	run_command("gpio set GPIOT_7", 0); //PUSB30_PWR
+	run_command("gpio set GPIOZ_8", 0); //USB20_UU6_SW_SEL41
+	run_command("gpio set GPIOY_10", 0); //USB20_UU6_SW_SEL40
+	run_command("gpio set GPIOZ_6", 0); //USB20_UU9_SW_SEL11
+	run_command("gpio set GPIOZ_7", 0); //USB20_UU9_SW_SEL10
+	run_command("gpio set GPIOY_12", 0); //USB30_UU11_SW_SEL14
+	run_command("gpio set GPIOT_14", 0); //USB30_OTG_SW
+#else
+	run_command("gpio set GPIOD_9", 0); //ETH_PWREN
+	run_command("gpio set GPIOD_3", 0); //WiFi_Power_CTRL -> ON
+	run_command("gpio set GPIOM_8", 0); //AUSB_PWR
+	run_command("gpio set GPIOY_16", 0); //OTG_B_PWR_EN
+	run_command("gpio set GPIOX_18", 0); //OTG_ID -> HOST
+	//run_command("gpio set GPIOD_6", 0); //LEDR_CTL
+	//run_command("gpio set GPIOY_1", 0); //LEDG_CTL
+	//run_command("gpio set GPIOY_8", 0); //LEDB_CTL
+	run_command("gpio clear GPIOX_6", 0); //WIFI_PWREN -> OFF
+	run_command("gpio clear GPIOY_3", 0); //68411_PWREN -> OFF
+#endif
+	return 0;
+}
+
 int board_init(void)
 {
 	printf("board init\n");
@@ -234,10 +262,8 @@ int board_init(void)
 	run_command("watchdog off", 0);
 	printf("watchdog disable\n");
 
-	run_command("gpio set GPIOT_15", 0);//5G reset
-
 #ifdef CONFIG_POWER_FUSB302
-	fusb302_init();
+	//fusb302_init();
 #endif
 
 	aml_set_bootsequence(0);
@@ -251,14 +277,8 @@ int board_init(void)
 	active_clk();
 #endif
 	pinctrl_devices_active(PIN_CONTROLLER_NUM);
-	/*set vcc5V*/
-	run_command("gpio set GPIOH_4", 0);
-	run_command("gpio clear GPIOT_15", 0);//5G reset
-	run_command("gpio clear GPIOH_3", 0); //pcie reset-gpio
 
-	// FAN testing
-	run_command("i2c dev 6", 0);
-	run_command("i2c mw 0x18 0x96 1", 0);
+	board_cxm_init();
 
 	return 0;
 }

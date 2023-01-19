@@ -54,7 +54,8 @@
 #define         AN_408_DDR0_4G_DDR1_4G_RANK01   6
 #define         AN_408_DDR0_3G_DDR1_3G_RANK01   7
 
-#define DDR_SIZE_TYPE_1         AN_408_DDR0_4G_DDR1_4G_RANK01
+//#define DDR_SIZE_TYPE_1         AN_408_DDR0_4G_DDR1_4G_RANK01
+#define DDR_SIZE_TYPE_1         AN_408_DDR0_2G_DDR1_2G
 
 ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_param"))) = {
 #if 0
@@ -267,7 +268,7 @@ ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_param"))) = {
 		//.dram_rank_config		= CONFIG_DDR0_32BIT_RANK0_CH0,
 		.DramType = CONFIG_DDR_TYPE_LPDDR4,
 		.enable_lpddr4x_mode = ENABLE_LPDDR4X_MODE,
-		.DRAMFreq ={ 2016,		       0,	0,	 0	 },
+		.DRAMFreq ={ 1848,		       0,	0,	 0	 },
 		.ddr_rfc_type = DDR_RFC_TYPE_LPDDR4_8Gbx1,
 		.ddr_base_addr = CFG_DDR_BASE_ADDR,
 		.ddr_start_offset = CFG_DDR_START_OFFSET,
@@ -473,7 +474,7 @@ ddr_set_t __ddr_setting[] __attribute__ ((section(".ddr_param"))) = {
 		//.dram_rank_config		= CONFIG_DDR0_32BIT_RANK0_CH0,
 		.DramType = CONFIG_DDR_TYPE_LPDDR4,
 		.enable_lpddr4x_mode = ENABLE_LPDDR4X_MODE,
-		.DRAMFreq ={ 2016,		       0,	0,	 0	 },
+		.DRAMFreq ={ 1848,		       0,	0,	 0	 },
 		.ddr_rfc_type = DDR_RFC_TYPE_LPDDR4_8Gbx1,
 		.ddr_base_addr = CFG_DDR_BASE_ADDR,
 		.ddr_start_offset = CFG_DDR_START_OFFSET,

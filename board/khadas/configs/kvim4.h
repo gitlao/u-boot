@@ -378,7 +378,8 @@
             "setenv bootargs ${bootargs} androidboot.wificountrycode=${region_code};"\
             "\0"\
         "upgrade_key="\
-            "if gpio input GPIOD_4; then "\
+            "saradc open 2 1;"\
+            "if saradc get_in_range 0 20; then "\
                 "echo detect upgrade key; run update;"\
             "fi;"\
             "\0"\
